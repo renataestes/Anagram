@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <!-- *** NOTES ***
+ //“Write a function that takes two strings, s1 and s2. If s1 is represented in any permutation within s2, return true, otherwise return false. Note: s2 can be longer”
+
+ //if any of the letters in your 2nd word matches what's in the 1st, then push onto a newArr that will put all those letter back together later. The break stops the second loop from continuing through the ENTIRE s2 word for duplicate letters once it's found a match.
+-->
+    
+    <head>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+
+    <body id="center">
+        <div id="anagramBox">
+            <p>Is this working?</p>
+            <h1>Do You Have An Anagram?</h1>
+            <h2>an·a·gram</h2>
+            <h4>a word, phrase, or name formed by rearranging the letters of another, such as <i>cinema</i>, formed from <i>iceman</i>.</h4>
+                <p>Insert 2 words below to see if you have one!</p>
+                <b>Word 1:</b>
+                <input id='input1' style='width: 40%;'>
+                    <br>
+                <b>Word 2:</b>
+                <input id='input2' style='width: 40%;'>
+                    <br>
+                <button onClick='run()'>Check</button>
+                    <br>
+                <div id='output'></div>
+        </div>
+    </body>
+    
+    <style>
+        
+        #anagramBox {
+            background-color: white;
+            border: 3px solid aqua;
+            padding: 20px;
+        }
+        
+        #center {
+            margin: auto;
+            margin-top:15%;
+            width: 50%;
+            text-align: center;
+            background-image: url(bluezigzag.png);
+            background-size: 100%;
+        }
+    
+        #input1 {
+            margin:10px;
+            
+        }
+    
+        #input2 {
+            margin:10px;
+            
+        }
+        
+        #output {
+            padding:10px 0px 2px 0px;
+        }
+    
+    
+    </style>
+
+    <script>
+
+        run = function(input1,input2){ 
+            var input1 = document.getElementById('input1').value; 
+            var input2 = document.getElementById('input2').value;
+
+            var output = document.getElementById('output');
+            //alert(output);
+
+            var newArr=[];
+
+             for(var i=0;i<input1.length;i++){
+
+                for(var j=0;j<input2.length;j++){
+
+                    if(input1[i]===input2[j]){
+                    newArr.push(input1[i]);
+                    break;
+
+                    }
+                }
+            }
+            output.innerHTML = newArr.join("");
+            //alert(output.innerHTML);
+
+            if(output.innerHTML === input1){
+                alert("You have an anagram! It's '" + output.innerHTML + "'!");
+            } else{
+                alert("TRY AGAIN");
+            }
+        }
+
+    </script>
+    
+</html>
